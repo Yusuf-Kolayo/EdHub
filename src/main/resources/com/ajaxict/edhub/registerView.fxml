@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="564.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ajaxict.edhub.RegisterController">
    <children>
-      <TextField fx:id="txtEmail" layoutX="248.0" layoutY="205.0" prefHeight="35.0" prefWidth="263.0" />
+      <TextField fx:id="ctrLastName" layoutX="248.0" layoutY="205.0" prefHeight="35.0" prefWidth="263.0" />
       <Button fx:id="btnLogin" layoutX="142.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToWelcome" prefHeight="27.0" prefWidth="78.0" text="Log In" />
       <Label layoutX="52.0" layoutY="205.0" prefHeight="35.0" prefWidth="141.0" text="Lastname">
          <font>
@@ -22,31 +22,31 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="33.0" layoutY="19.0" prefHeight="43.0" prefWidth="499.0" text="EdHub ">
+      <Label fx:id="lblTitle" alignment="CENTER" layoutX="33.0" layoutY="19.0" prefHeight="43.0" prefWidth="499.0" text="EdHub ">
          <font>
             <Font name="Monotype Corsiva" size="52.0" />
          </font>
       </Label>
-      <Button fx:id="btnRegister" layoutX="433.0" layoutY="420.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="78.0" text="Register" />
+      <Button fx:id="btnRegister" layoutX="433.0" layoutY="420.0" mnemonicParsing="false" onAction="#saveUserToDb" prefHeight="27.0" prefWidth="78.0" text="Register" />
       <Button fx:id="btnQuit" layoutX="50.0" layoutY="420.0" mnemonicParsing="false" onAction="#quitApp" prefHeight="27.0" prefWidth="78.0" text="Quit" />
       <Label layoutX="52.0" layoutY="292.0" prefHeight="35.0" prefWidth="109.0" text="Gender">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <ComboBox layoutX="247.0" layoutY="297.0" prefHeight="35.0" prefWidth="263.0" />
-      <TextField fx:id="txtEmail1" layoutX="248.0" layoutY="250.0" prefHeight="35.0" prefWidth="263.0" />
+      <ComboBox fx:id="ctrGender" layoutX="247.0" layoutY="297.0" prefHeight="35.0" prefWidth="263.0" />
+      <TextField fx:id="ctrEmail" layoutX="248.0" layoutY="250.0" prefHeight="35.0" prefWidth="263.0" />
       <Label layoutX="52.0" layoutY="250.0" prefHeight="35.0" prefWidth="141.0" text="Email Address">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmail2" layoutX="251.0" layoutY="160.0" prefHeight="35.0" prefWidth="263.0" />
+      <TextField fx:id="ctrFirstName" layoutX="248.0" layoutY="158.0" prefHeight="35.0" prefWidth="263.0" />
       <Label layoutX="55.0" layoutY="160.0" prefHeight="35.0" prefWidth="141.0" text="Firstname">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <PasswordField layoutX="245.0" layoutY="343.0" prefHeight="35.0" prefWidth="263.0" />
+      <PasswordField fx:id="ctrPassword" layoutX="245.0" layoutY="343.0" prefHeight="35.0" prefWidth="263.0" />
    </children>
 </AnchorPane>

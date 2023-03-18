@@ -8,9 +8,9 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ajaxict.edhub.WelcomeController">
    <children>
-      <TextField fx:id="txtEmail" layoutX="241.0" layoutY="147.0" prefHeight="35.0" prefWidth="263.0" />
-      <TextField fx:id="txtPword" layoutX="241.0" layoutY="192.0" prefHeight="35.0" prefWidth="263.0" />
-      <Button fx:id="btnLogin" layoutX="426.0" layoutY="258.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="78.0" text="Log In" />
+      <TextField fx:id="ctrEmail" layoutX="241.0" layoutY="147.0" prefHeight="35.0" prefWidth="263.0" />
+      <TextField fx:id="ctrPassword" layoutX="241.0" layoutY="192.0" prefHeight="35.0" prefWidth="263.0" />
+      <Button fx:id="btnLogin" layoutX="426.0" layoutY="258.0" mnemonicParsing="false" onAction="#logInUser" prefHeight="27.0" prefWidth="78.0" text="Log In" />
       <Label layoutX="45.0" layoutY="147.0" prefHeight="35.0" prefWidth="141.0" text="Email Address">
          <font>
             <Font size="17.0" />
