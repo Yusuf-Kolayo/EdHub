@@ -78,16 +78,16 @@ public class RegisterController implements Initializable {
                 System.out.println("Registration successful!");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("EdHub");
-//                alert.setHeaderText("This is an information message");
-                alert.setContentText("Registration was successfull!");
+                alert.setHeaderText(null);
+                alert.setContentText("Registration was successful!");
                 alert.showAndWait();
             } else {
                 // If the data was not inserted into the database
                 System.out.println("Registration failed!");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("EdHub");
-//                alert.setHeaderText("This is an information message");
-                alert.setContentText("Registration failed! Smething went wrong. Try again");
+                alert.setHeaderText(null);
+                alert.setContentText("Registration failed! Something went wrong. Try again");
                 alert.showAndWait();
             }
 

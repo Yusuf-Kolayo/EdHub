@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="904.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ajaxict.edhub.DashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ajaxict.edhub.DashboardController">
    <children>
-      <TableView fx:id="userTableView" layoutX="108.0" layoutY="6.0" prefHeight="469.0" prefWidth="790.0">
-         <columns>
-            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="Firstname" />
-            <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Lastname" />
-            <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email" />
-            <TableColumn fx:id="genderColumn" prefWidth="75.0" text="Gender" />
-         </columns>
-      </TableView>
+      <Button layoutX="6.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Dashboard" />
+      <Pane fx:id="mainPane" layoutX="108.0" layoutY="6.0" prefHeight="491.0" prefWidth="910.0" style="-fx-border-color: #cccccc; -fx-border-width: 1px;" />
+      <Button layoutX="6.0" layoutY="37.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Post Board" />
    </children>
 </AnchorPane>
