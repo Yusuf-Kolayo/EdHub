@@ -1,6 +1,8 @@
 package com.ajaxict.edhub;
 
 // Import Java.sql
+import javafx.scene.control.Alert;
+
 import java.sql.*;
 
 public class DBConnect {
@@ -22,10 +24,17 @@ public class DBConnect {
             // jdbc:mysql://hostname:port/databasename, server username, server password
             Connection conn = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWD);
             return conn;
-
         }catch(Exception ex) {
             // If connection fail
             System.out.println("Error: " + ex);
+
+            // Display a success message
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("EdHub: Problem Detected");
+            alert.setHeaderText(null);
+            alert.setContentText("There is a problem connecting to Database, please check if database software is properly running!");
+            alert.showAndWait();
+
             return null;
         }
 

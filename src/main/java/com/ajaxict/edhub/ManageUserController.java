@@ -76,6 +76,7 @@ public class ManageUserController implements Initializable {
                 String lastName = rs.getString("last_name");
                 String email = rs.getString("email");
                 String gender = rs.getString("gender");
+                String displayPic = rs.getString("display_pic");
 
                 users.add(new User(id, firstName, lastName, email, gender));
             }
@@ -93,6 +94,18 @@ public class ManageUserController implements Initializable {
         // Set the user table data
         userTableView.setItems(users);
 
+        userTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                // Call your function here, passing in the selected row data as needed
+                try {
+                    handleViewUserAction();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+
 
         try {
             // load insertUserView
@@ -105,6 +118,7 @@ public class ManageUserController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        
 
         // get the instance of the class
         instance = this;
@@ -133,6 +147,7 @@ public class ManageUserController implements Initializable {
                 String lastName = rs.getString("last_name");
                 String email = rs.getString("email");
                 String gender = rs.getString("gender");
+                String displayPic = rs.getString("display_pic");
 
                 users.add(new User(id, firstName, lastName, email, gender));
             }
@@ -168,7 +183,7 @@ public class ManageUserController implements Initializable {
             mainPane.getChildren().clear();
 
             // load new FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProfileView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("userProfileView.fxml"));
             Parent newContent = loader.load();
             UserProfileController userProfileController = loader.getController();
 

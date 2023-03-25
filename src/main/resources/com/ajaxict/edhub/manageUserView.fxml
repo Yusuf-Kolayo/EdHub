@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ajaxict.edhub.ManageUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ajaxict.edhub.ManageUserController">
    <children>
-      <TableView fx:id="userTableView" layoutX="108.0" layoutY="6.0" prefHeight="423.0" prefWidth="492.0">
+      <TableView fx:id="userTableView" layoutX="108.0" layoutY="6.0" prefHeight="474.0" prefWidth="492.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="22.0" text="ID" />
             <TableColumn fx:id="firstNameColumn" prefWidth="123.0" text="Firstname" />
@@ -18,9 +18,9 @@
          </columns>
       </TableView>
       <Button layoutX="6.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleInsertUserAction" prefHeight="25.0" prefWidth="95.0" text="Add New" />
-      <Button layoutX="6.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleEditUserAction" prefHeight="25.0" prefWidth="95.0" text="Update" />
+      <Button fx:id="btnUpdate" layoutX="6.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleEditUserAction" prefHeight="25.0" prefWidth="95.0" text="Update" />
       <Button layoutX="6.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleDeleteUserAction" prefHeight="25.0" prefWidth="95.0" text="Delete" />
-      <Button layoutX="6.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Profile" />
-      <HBox fx:id="mainPane" layoutX="605.0" layoutY="6.0" prefHeight="423.0" prefWidth="304.0" style="-fx-border-color: #cccccc;" />
+      <Button layoutX="6.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleViewUserAction" prefHeight="25.0" prefWidth="95.0" text="Profile" />
+      <HBox fx:id="mainPane" layoutX="605.0" layoutY="6.0" prefHeight="474.0" prefWidth="316.0" style="-fx-border-color: #cccccc;" />
    </children>
 </AnchorPane>
