@@ -4,8 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -38,7 +36,6 @@ public class MainFrameController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
 
 
         // get the instance of the class

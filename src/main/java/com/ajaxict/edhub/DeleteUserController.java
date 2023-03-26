@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -59,7 +60,7 @@ public class DeleteUserController {
 
                     // refresh the dashboard users table
                     ManageUserController.getInstance().refreshTableData();
-                    ManageUserController.getInstance().clearMainPane();
+                    ManageUserController.getInstance().handleInsertUserAction();
 
                     // Show success message
                     Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -71,6 +72,8 @@ public class DeleteUserController {
                 } catch (SQLException ex) {
                     // If there is an exception
                     System.out.println("Error: " + ex.getMessage());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
 
 

@@ -6,13 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,14 +19,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ManageUserController implements Initializable {
 
 
     @FXML private Pane mainPane;
+    @FXML private ProgressBar progressBar;
     @FXML private  TableView<User> userTableView;
     @FXML private TableColumn<User, Integer> idColumn;
     @FXML private TableColumn<User, String> firstNameColumn;
@@ -35,6 +33,8 @@ public class ManageUserController implements Initializable {
     @FXML private TableColumn<User, String> emailColumn;
     @FXML private TableColumn<User, String> genderColumn;
     private static ObservableList<User> users;
+
+
 
     private static ManageUserController instance;
 
@@ -45,8 +45,13 @@ public class ManageUserController implements Initializable {
         return instance;
     }
 
+
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
 
         // Initialize the user table columns
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -60,7 +65,7 @@ public class ManageUserController implements Initializable {
             Connection conn = DBConnect.DBConnect();
 
             // Prepare the SQL statement
-            String sql = "SELECT * FROM users";
+            String sql = "SELECT email FROM users";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             // Execute the SQL statement
@@ -71,16 +76,9 @@ public class ManageUserController implements Initializable {
 
             // Add the data to the observable list
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String firstName = rs.getString("first_name");
-                String lastName = rs.getString("last_name");
                 String email = rs.getString("email");
-                String gender = rs.getString("gender");
-                String displayPic = rs.getString("display_pic");
-
-                users.add(new User(id, firstName, lastName, email, gender));
+                users.add(new User(email));
             }
-
             // Close the ResultSet, PreparedStatement and Connection objects
             rs.close();
             pstmt.close();
@@ -118,10 +116,11 @@ public class ManageUserController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        
+
 
         // get the instance of the class
         instance = this;
+
     }
 
 
@@ -149,7 +148,7 @@ public class ManageUserController implements Initializable {
                 String gender = rs.getString("gender");
                 String displayPic = rs.getString("display_pic");
 
-                users.add(new User(id, firstName, lastName, email, gender));
+                users.add(new User(email));
             }
 
             // Close the ResultSet, PreparedStatement and Connection objects
@@ -267,7 +266,7 @@ public class ManageUserController implements Initializable {
 
 
     @FXML
-    private void handleInsertUserAction() throws IOException {
+    public void handleInsertUserAction() throws IOException {
 
         // clear mainPane
         mainPane.getChildren().clear();

@@ -71,29 +71,21 @@ public class UserProfileController {
 
         if (file != null) {
 
-            // create the target directory for the uploaded user pictures if it does not already exist
-            String userHomeDir = System.getProperty("user.home");
-            String projectName = "edhub";
-            File projectDir = new File(userHomeDir, projectName);
-            if (!projectDir.exists()) {
-                projectDir.mkdir();
-            }
-            File userDpDir = new File(projectDir, "user_dp");
-            if (!userDpDir.exists()) {
-                userDpDir.mkdir();
-            }
+            // check if user dp folder present or create
+            Utility.checkUserDpFolder();
 
             long timestamp = System.currentTimeMillis();      // fetch & attach timestamp
             String timestampStr = String.valueOf(timestamp);
 
+            String userDpDirectory = new Utility().userDpDirectory;
+
             // Copy selected file to user_dp folder
-            String destFilePath = userHomeDir + "/edhub/user_dp/user_" + selectedUser.getId() + "_" + timestampStr + ".jpg";
+            String destFilePath = userDpDirectory + "/user_" + selectedUser.getId() + "_" + timestampStr + ".jpg";
             Path destPath = Paths.get(destFilePath);
             Files.copy(file.toPath(), destPath, StandardCopyOption.REPLACE_EXISTING);
 
             // Update user's displayPic field in database
-            if (selectedUser.setDisplayPic(destFilePath)) {
-
+            if (selectedUser.saveDisplayPic(destFilePath)) {
                 if (oldDp!=null) {
                     deleteOldDp(oldDp);  // delete old pic
                 }
