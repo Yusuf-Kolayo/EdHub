@@ -10,9 +10,9 @@ public class User {
     private String gender;
     private String displayPic;
 
-    public User(String email) {
+    public User(String email, Connection conn) {
 
-            Connection conn = DBConnect.DBConnect();
+//            Connection conn = DBConnect.DBConnect();
 
         try {
             String sql = "SELECT * FROM users WHERE email = ?";

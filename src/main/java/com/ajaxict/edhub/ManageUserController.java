@@ -61,36 +61,36 @@ public class ManageUserController implements Initializable {
         genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
 
         // Load the data from the database and add it to the user table
-        try {
-            Connection conn = DBConnect.DBConnect();
-
-            // Prepare the SQL statement
-            String sql = "SELECT email FROM users";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-
-            // Execute the SQL statement
-            ResultSet rs = pstmt.executeQuery();
-
-            // Create an observable list of users to hold the data
-            users = FXCollections.observableArrayList();
-
-            // Add the data to the observable list
-            while (rs.next()) {
-                String email = rs.getString("email");
-                users.add(new User(email));
-            }
-            // Close the ResultSet, PreparedStatement and Connection objects
-            rs.close();
-            pstmt.close();
-            conn.close();
-
-        } catch (SQLException ex) {
-            // If there is an exception
-            System.out.println("Error: " + ex.getMessage());
-        }
-
-        // Set the user table data
-        userTableView.setItems(users);
+//        try {
+//            Connection conn = DBConnect.DBConnect();
+//
+//            // Prepare the SQL statement
+//            String sql = "SELECT email FROM users";
+//            PreparedStatement pstmt = conn.prepareStatement(sql);
+//
+//            // Execute the SQL statement
+//            ResultSet rs = pstmt.executeQuery();
+//
+//            // Create an observable list of users to hold the data
+//            users = FXCollections.observableArrayList();
+//
+//            // Add the data to the observable list
+//            while (rs.next()) {
+//                String email = rs.getString("email");
+//                users.add(new User(email));
+//            }
+//            // Close the ResultSet, PreparedStatement and Connection objects
+//            rs.close();
+//            pstmt.close();
+//            conn.close();
+//
+//        } catch (SQLException ex) {
+//            // If there is an exception
+//            System.out.println("Error: " + ex.getMessage());
+//        }
+//
+//        // Set the user table data
+//        userTableView.setItems(users);
 
         userTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -124,45 +124,17 @@ public class ManageUserController implements Initializable {
     }
 
 
-    public void refreshTableData() {
-        // Load the data from the database and add it to the user table
-        try {
-            Connection conn = DBConnect.DBConnect();
-
-            // Prepare the SQL statement
-            String sql = "SELECT * FROM users";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-
-            // Execute the SQL statement
-            ResultSet rs = pstmt.executeQuery();
-
-            // Create an observable list of users to hold the data
-            users = FXCollections.observableArrayList();
-
-            // Add the data to the observable list
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String firstName = rs.getString("first_name");
-                String lastName = rs.getString("last_name");
-                String email = rs.getString("email");
-                String gender = rs.getString("gender");
-                String displayPic = rs.getString("display_pic");
-
-                users.add(new User(email));
-            }
-
-            // Close the ResultSet, PreparedStatement and Connection objects
-            rs.close();
-            pstmt.close();
-            conn.close();
-
-        } catch (SQLException ex) {
-            // If there is an exception
-            System.out.println("Error: " + ex.getMessage());
-        }
-
-        // Set the user table data
+    public void setData(ObservableList<User> users) {
         userTableView.setItems(users);
+    }
+
+
+    public ProgressBar getProgressBar() {
+        return progressBar;
+    }
+
+    public void refreshTableData() {
+        MainFrameController.loadDataInBackground(this);
     }
 
     public void clearMainPane() {

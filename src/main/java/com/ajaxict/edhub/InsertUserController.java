@@ -82,11 +82,12 @@ public class InsertUserController implements Initializable {
 
                 if (!isInternetConnected()) {
                     System.out.println("No internet connection.");
+                    AlertBox.display("Error", "Check your internet connection!", Alert.AlertType.ERROR);
                     return;
                 }
                 try {
                     // Set API endpoint and query parameters
-                    String endpoint = "https://randomuser.me/api/?results=" + num + "&nat=us,ca&inc=name,email,gender,picture";
+                    String endpoint = "https://randomuser.me/api/?results=" + num + "&nat=us,ca&inc=name,email,gender";
                     URL url = new URL(endpoint);
 
                     // Open a connection to the API endpoint
@@ -111,7 +112,7 @@ public class InsertUserController implements Initializable {
                         String lastName = user.getJSONObject("name").getString("last");
                         String email = user.getString("email");
                         String gender = user.getString("gender");
-                        String pictureUrl = user.getJSONObject("picture").getString("large");
+//                        String pictureUrl = user.getJSONObject("picture").getString("large");
                         System.out.println(firstName + " " + lastName + " - " + email);
 
                         String password = firstName;
@@ -121,28 +122,28 @@ public class InsertUserController implements Initializable {
 
 
                         // check if user dp folder present or create
-                        Utility.checkUserDpFolder();
-                        String userDpDirectory = new Utility().userDpDirectory;
-
-                        long timestamp = System.currentTimeMillis();      // fetch & attach timestamp
-                        String timestampStr = String.valueOf(timestamp);
-                        int user_id = User.getNextAutoIncrement();
-                        String userDpAbsoluteFilePath = userDpDirectory+"/user_" +user_id+"_"+ timestampStr + ".jpg";
+//                        Utility.checkUserDpFolder();
+//                        String userDpDirectory = new Utility().userDpDirectory;
+//
+//                        long timestamp = System.currentTimeMillis();      // fetch & attach timestamp
+//                        String timestampStr = String.valueOf(timestamp);
+//                        int user_id = User.getNextAutoIncrement();
+//                        String userDpAbsoluteFilePath = userDpDirectory+"/user_" +user_id+"_"+ timestampStr + ".jpg";
 
                         // Download user picture
-                        URL picture = new URL(pictureUrl);
-                        InputStream in = new BufferedInputStream(picture.openStream());
-                        FileOutputStream out = new FileOutputStream(userDpAbsoluteFilePath);
-                        byte[] buffer = new byte[1024];
-                        int bytesRead = 0;
-                        while ((bytesRead = in.read(buffer, 0, buffer.length)) >= 0) {
-                            out.write(buffer, 0, bytesRead);
-                        }
-                        out.close();
-                        in.close();
+//                        URL picture = new URL(pictureUrl);
+//                        InputStream in = new BufferedInputStream(picture.openStream());
+//                        FileOutputStream out = new FileOutputStream(userDpAbsoluteFilePath);
+//                        byte[] buffer = new byte[1024];
+//                        int bytesRead = 0;
+//                        while ((bytesRead = in.read(buffer, 0, buffer.length)) >= 0) {
+//                            out.write(buffer, 0, bytesRead);
+//                        }
+//                        out.close();
+//                        in.close();
 
-                        User newUser = new User(email);
-                        newUser.saveDisplayPic(userDpAbsoluteFilePath);
+//                        User newUser = new User(email);
+//                        newUser.saveDisplayPic(userDpAbsoluteFilePath);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
